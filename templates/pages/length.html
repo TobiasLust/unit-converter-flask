@@ -1,0 +1,26 @@
+{% extends "pages/layout.html" %} {% block title %}Unit Converter - Length{%
+endblock %} {% block content %}
+<form action="/length" method="post">
+  <input type="number" name="length" id="len_input" />
+  <select name="unit_from" id="unit_from">
+    {% for unit in units%} {% if unit == "m"%}
+    <option value="{{unit}}" selected>{{unit}}</option>
+    {% endif %}
+    <option value="{{unit}}">{{unit}}</option>
+    {% endfor %}
+  </select>
+  <select name="unit_to" id="unit_to">
+    {% for unit in units%} {% if unit == "km"%}
+    <option value="{{unit}}" selected>{{unit}}</option>
+    {% endif %}
+    <option value="{{unit}}">{{unit}}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Result</button>
+</form>
+<div class="view-result">
+  {% if result %}
+  <p>{{result}}</p>
+  {% endif %}
+</div>
+{% endblock %}

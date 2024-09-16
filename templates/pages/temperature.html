@@ -1,0 +1,28 @@
+{% extends "pages/layout.html" %} {% block title %}Unit Converter -
+Temperature{% endblock %} {% block content %}
+<form action="/temperature" method="post">
+  <input type="number" name="temp" id="temp_input" />
+  <select name="unit_from" id="unit_from">
+    {% for unit in units%}
+      {% if unit == "c"%}
+      <option value="{{unit}}" selected>{{unit}}</option>
+      {% endif %}
+    <option value="{{unit}}">{{unit}}</option>
+    {% endfor %}
+  </select>
+  <select name="unit_to" id="unit_to">
+    {% for unit in units%}
+      {% if unit == "f"%}
+      <option value="{{unit}}" selected>{{unit}}</option>
+      {% endif %}
+    <option value="{{unit}}">{{unit}}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Result</button>
+</form>
+<div>
+  {% if result %}
+  <h2>{{result}}</h2>
+  {% endif %}
+</div>
+{% endblock %}
